@@ -6,7 +6,7 @@
             <a class="mr-2" href="#">{{ post.author }}</a>
             <small class="text-muted">posted on {{ post.date_posted | date:"M d Y"}}</small>
         </div>
-        <h2><a href="#" class="article-title">{{ post.title }}</a></h2>
+        <h2><a href="{% url 'post-detail' post.id %}" class="article-title">{{ post.title }}</a></h2>
         <p class="aritcle-content"> {{ post.content }}</p>
     </div>
 </div>

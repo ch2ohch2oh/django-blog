@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %} 
+
+{% block content %} 
+
+<div class="media content-section">
+    <div class="media-body">
+        <div class="aritcle-metadata border-bottom py-1">
+            <a class="mr-2" href="#">{{ post.author }}</a>
+            <small class="text-muted">posted on {{ post.date_posted | date:"M d Y"}}</small>
+            {% if post.author == user %}
+                <div class="">
+                    <a href="{% url 'post-update' post.pk %}" class="btn btn-sm btn-outline-secondary py-0">Update</a>
+                    <a href="{% url 'post-delete' post.pk %}" class="btn btn-sm btn-outline-danger py-0">Delete</a>    
+                </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title mt-2">{{ post.title }}</h2>
+        <p class="aritcle-content"> {{ post.content }}</p>
+    </div>
+</div>
+
+{% endblock %}
