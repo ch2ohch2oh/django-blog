@@ -8,10 +8,14 @@
             <a class="mr-2" href="#">{{ post.author }}</a>
             <small class="text-muted">posted on {{ post.date_posted | date:"M d Y"}}</small>
             {% if post.author == user %}
-                <div class="">
-                    <a href="{% url 'post-update' post.pk %}" class="btn btn-sm btn-outline-secondary py-0">Update</a>
-                    <a href="{% url 'post-delete' post.pk %}" class="btn btn-sm btn-outline-danger py-0">Delete</a>    
-                </div>
+                <span class="">
+                    <a href="{% url 'post-update' post.pk %}" class="text-info">
+                        <small>Update</small>
+                    </a>
+                    <a href="{% url 'post-delete' post.pk %}" class="text-danger">
+                        <small>Delete</small>
+                    </a>    
+                </span>
             {% endif %}
         </div>
         <h2 class="article-title mt-2">{{ post.title }}</h2>
