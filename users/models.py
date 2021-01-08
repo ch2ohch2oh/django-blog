@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver
+from django.core.exceptions import ObjectDoesNotExist
 
 import os
 
@@ -37,9 +38,7 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_userprofile(sender, instance, created, **kwargs):
     print('create_profile signal triggered')
-    if created:
+    try:
+        instance.userprofile.save()
+    except ObjectDoesNotExist:
         UserProfile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_userprofile(sender, instance, **kwargs):
-    instance.userprofile.save()
