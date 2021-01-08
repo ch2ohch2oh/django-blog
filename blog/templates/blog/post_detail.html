@@ -5,7 +5,7 @@
 <div class="media content-section">
     <div class="media-body">
         <div class="aritcle-metadata border-bottom py-1">
-            <a class="mr-2" href="#">{{ post.author }}</a>
+            <a class="mr-2" href="{% 'user-posts' post.author.username %}">{{ post.author }}</a>
             <small class="text-muted">posted on {{ post.date_posted | date:"M d Y"}}</small>
             {% if post.author == user %}
                 <span class="">
